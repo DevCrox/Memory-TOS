@@ -111,4 +111,4 @@ These Terms may be updated from time to time. Continued use of MemoryBot after c
 
 ## 13. Contact
 
-For questions about these Terms, contact the operator of the MemoryBot instance installed in your Discord server.
+For questions about these Terms, contact the operator of the MemoryBot instance installed in your Discord server or reach out to aboulhassan.rayan@gmail.com.
