@@ -1,119 +1,114 @@
-# Privacy Policy for MemoryBot
+# Terms of Service
 
 _Last updated: August 13, 2026_
 
-MemoryBot is a Discord bot that helps servers remember useful context from opted-in channels. This Privacy Policy explains what information MemoryBot processes, what it stores, and what server members and administrators can do to control it.
+## 1. Acceptance
 
-## Summary
+By inviting, enabling, or using MemoryBot in a Discord server, you agree to these Terms of Service.
 
-MemoryBot is disabled by default in every server and every channel. It only begins processing messages after a server administrator enables memory collection for a channel with `/enable`.
+If you do not agree, do not use MemoryBot and remove it from your server.
 
-MemoryBot does **not** store raw Discord message text as permanent memory. Instead, it temporarily batches messages from enabled channels, sends those batches to Gemini for memory extraction, and stores only extracted summaries plus related metadata in a local vector database.
+## 2. Description of Service
 
-## Information MemoryBot Processes
+MemoryBot is a Discord bot that helps servers remember useful context from opted-in channels.
 
-When MemoryBot is enabled in a Discord channel, it may process:
+MemoryBot may:
 
-- Message content from enabled channels
-- Discord user mention tokens and user IDs, when available
-- Discord channel mention tokens and channel IDs, when available
-- Server IDs and channel IDs
-- Timestamps or memory age metadata
-- Questions submitted through `/ask`
-- Messages that appear to be asking about prior server context, for trigger detection
-- Command usage needed to operate bot features
+- Read messages in enabled Discord channels
+- Temporarily batch messages for memory extraction
+- Store extracted memory summaries and metadata
+- Answer questions about stored server memory
+- Summarize recent remembered topics
+- Detect when a user appears to be asking about previous server context
 
-MemoryBot ignores:
+MemoryBot is disabled by default and only begins memory collection after a server administrator enables it in a channel.
 
-- Direct messages
-- Messages from bots
-- Channels that have not been enabled
-- Users who have opted out with `/ignore_me`
+## 3. Server Administrator Responsibilities
 
-Bot commands are only available inside Discord servers and are disabled in DMs.
+Server administrators are responsible for:
 
-## What MemoryBot Stores
+- Deciding whether MemoryBot is appropriate for their server
+- Enabling MemoryBot only in suitable channels
+- Informing server members that MemoryBot may process messages in enabled channels
+- Managing user concerns, deletion requests, and configuration choices
+- Protecting any bot credentials, API keys, database files, or hosting environment under their control
 
-MemoryBot stores extracted memory summaries and metadata in a local ChromaDB vector database.
+Administrators can use:
 
-Stored data may include:
+```text
+/enable [channel]
+/disable [channel]
+/forget confirm:True
+/memory_stats
+```
 
-- A concise summary of useful discussion context
-- Server and channel metadata
-- User or channel references, where available
-- Embeddings used for similarity search
-- Opt-out records for users who run `/ignore_me`
+## 4. User Controls
 
-MemoryBot does **not** permanently store full raw message transcripts as memories.
+Users may opt out of memory collection in a server by running:
 
-Raw channel message batches are held temporarily in memory during the batching window so MemoryBot can extract useful memories. After processing, the durable stored record is the extracted summary and metadata, not the original raw transcript.
+```text
+/ignore_me
+```
 
-## Use of Gemini
+Users may opt back in by running:
 
-MemoryBot uses Google Gemini for several AI features, including:
+```text
+/unignore_me
+```
 
-- Extracting durable memories from enabled-channel message batches
-- Creating embeddings for stored memories, if configured to use Gemini embeddings
-- Confirming whether a message appears to be asking a memory-related question
-- Generating answers for `/ask` and proactive memory responses
-- Generating `/catch-me-up` summaries
+## 5. Acceptable Use
 
-This means message batches, questions, and some triggering messages may be sent to Gemini for processing.
+You agree not to use MemoryBot to:
 
-If MemoryBot is configured for local embeddings, embeddings can be generated locally instead. However, Gemini may still be used for memory extraction, trigger confirmation, and answer generation unless the bot operator changes that behavior.
+- Violate Discord's Terms of Service or Community Guidelines
+- Collect, process, or expose information unlawfully
+- Harass, abuse, threaten, or target other people
+- Store highly sensitive information without appropriate consent
+- Attempt to bypass bot permissions, rate limits, or security controls
+- Reverse engineer, attack, overload, or disrupt the bot or its hosting environment
 
-## How MemoryBot Uses Stored Memories
+## 6. AI-Generated Output
 
-MemoryBot uses stored memories to:
+MemoryBot uses AI services to summarize discussions and answer questions from stored memories.
 
-- Answer server memory questions through `/ask`
-- Proactively respond when users appear to ask about previous context
-- Generate recent-topic summaries with `/catch-me-up`
-- Show memory statistics with `/memory_stats`
-- Help server members recover previous decisions, plans, and discussion context
+AI-generated responses may be incomplete, incorrect, or outdated. You should not rely on MemoryBot for legal, medical, financial, safety-critical, or emergency decisions.
 
-MemoryBot is designed to answer using retrieved stored memories, not by exposing raw message logs.
+## 7. Data and Privacy
 
-## Retention
+MemoryBot's data practices are described in the Privacy Policy.
 
-By default, MemoryBot keeps stored memories for **90 days**.
+By using MemoryBot, you understand that enabled-channel messages may be temporarily processed and may be sent to AI services such as Google Gemini to provide bot features.
 
-The retention period is controlled by the bot configuration value:
+## 8. Availability
 
-MemoryBot runs a cleanup task every 24 hours while online to remove expired memories.
+MemoryBot may be unavailable, delayed, rate-limited, changed, or discontinued at any time.
 
-## Data Deletion
+No guarantee is made that MemoryBot will always respond, remember every useful detail, or preserve stored memories indefinitely.
 
-Server administrators can delete all stored memories for their server by running:
+## 9. No Warranty
+
+MemoryBot is provided "as is" and "as available," without warranties of any kind.
+
+To the maximum extent permitted by law, the bot operator disclaims all warranties, express or implied, including warranties of reliability, fitness for a particular purpose, accuracy, and non-infringement.
+
+## 10. Limitation of Liability
+
+To the maximum extent permitted by law, the bot operator is not liable for any indirect, incidental, special, consequential, or punitive damages, or for loss of data, profits, reputation, server activity, or access arising from use of MemoryBot.
+
+## 11. Removal
+
+A server administrator may stop using MemoryBot by disabling it in channels or removing it from the server.
+
+Stored server memories may be deleted with:
 
 ```text
 /forget confirm:True
 ```
-This deletes stored memories, clears cached answers, and cancels pending memory batches for that server.
-Users who do not want future messages remembered can run:
-```/ignore_me```
 
-## Data Sharing
+## 12. Changes to These Terms
 
-MemoryBot may share information with:
-- Discord, as part of normal bot operation
-- Google Gemini, when AI processing is required
-MemoryBot does not sell personal information.
+These Terms may be updated from time to time. Continued use of MemoryBot after changes means you accept the updated Terms.
 
-## Security
+## 13. Contact
 
-MemoryBot stores memories in a local database controlled by the bot operator. The bot operator is responsible for protecting the bot host, database files, Discord token, Gemini API key, and other configuration secrets.
-MemoryBot is designed to reduce long-term storage of raw conversation data by storing extracted summaries instead of full message transcripts.
-
-## Children’s Privacy
-
-MemoryBot is intended for use in Discord servers. Server owners and administrators are responsible for deciding whether the bot is appropriate for their community and for enabling it only in suitable channels.
-
-## Changes to This Policy
-
-This Privacy Policy may be updated when MemoryBot changes. The latest version should be posted wherever the bot operator hosts the policy.
-
-## Contact
-
-For questions about this Privacy Policy or requests related to stored data, contact the operator of the MemoryBot instance installed in your Discord server or reach out to aboulhassan.rayan@gmail.com
-
+For questions about these Terms, contact the operator of the MemoryBot instance installed in your Discord server.
