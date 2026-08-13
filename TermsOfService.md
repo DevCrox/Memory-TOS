@@ -80,5 +80,39 @@ By default, MemoryBot keeps stored memories for **90 days**.
 
 The retention period is controlled by the bot configuration value:
 
-```yaml
-privacy.retention_days
+MemoryBot runs a cleanup task every 24 hours while online to remove expired memories.
+
+## Data Deletion
+
+Server administrators can delete all stored memories for their server by running:
+
+```text
+/forget confirm:True
+```
+This deletes stored memories, clears cached answers, and cancels pending memory batches for that server.
+Users who do not want future messages remembered can run:
+```/ignore_me```
+
+### Data Sharing
+
+MemoryBot may share information with:
+- Discord, as part of normal bot operation
+- Google Gemini, when AI processing is required
+MemoryBot does not sell personal information.
+
+### Security
+
+MemoryBot stores memories in a local database controlled by the bot operator. The bot operator is responsible for protecting the bot host, database files, Discord token, Gemini API key, and other configuration secrets.
+MemoryBot is designed to reduce long-term storage of raw conversation data by storing extracted summaries instead of full message transcripts.
+
+### Children’s Privacy
+
+MemoryBot is intended for use in Discord servers. Server owners and administrators are responsible for deciding whether the bot is appropriate for their community and for enabling it only in suitable channels.
+
+### Changes to This Policy
+
+This Privacy Policy may be updated when MemoryBot changes. The latest version should be posted wherever the bot operator hosts the policy.
+
+### Contact
+For questions about this Privacy Policy or requests related to stored data, contact the operator of the MemoryBot instance installed in your Discord server or reach out to aboulhassan.rayan@gmail.com
+
