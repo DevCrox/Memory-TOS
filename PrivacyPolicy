@@ -1,0 +1,94 @@
+# Privacy Policy
+
+_Last updated: August 13, 2026_
+
+This Privacy Policy explains how MemoryBot collects, uses, stores, and deletes information when used in a Discord server.
+
+## Overview
+
+MemoryBot is a Discord bot that helps servers remember useful context from previous conversations. It works only in channels where a server administrator has explicitly enabled it.
+
+MemoryBot is disabled by default. It does not collect memory from a server or channel unless an administrator runs `/enable`.
+
+## Information Collected
+
+When enabled in a channel, MemoryBot may process:
+
+- Message content from enabled Discord channels
+- Discord user IDs and user mentions
+- Discord channel IDs and channel mentions
+- Discord server IDs
+- Message timestamps or related metadata
+- Questions submitted through bot commands such as `/ask`
+- Recent stored memory data used for `/catch-me-up`
+- User opt-out status from `/ignore_me`
+
+MemoryBot does not process direct messages. Bot commands are server-only and are not available in DMs.
+
+## Information Stored
+
+MemoryBot stores extracted memory summaries and related metadata in a local vector database.
+
+MemoryBot does not permanently store full raw message transcripts as memories. Raw channel messages may be temporarily batched in memory so the bot can extract useful summaries, but the long-term stored data is the extracted memory summary and metadata.
+
+Stored metadata may include server IDs, channel IDs, timestamps, and user IDs if configured.
+
+## Use of AI Services
+
+MemoryBot may send relevant message batches, questions, trigger-check messages, and stored memory text to Google Gemini for AI processing.
+
+Gemini may be used to:
+
+- Extract useful memories from channel discussions
+- Generate embeddings for memory search
+- Detect whether a message is asking about server memory
+- Answer `/ask` questions
+- Generate `/catch-me-up` summaries
+
+The exact behavior may depend on the bot operator’s configuration.
+
+## How Information Is Used
+
+MemoryBot uses collected and stored information to:
+
+- Remember useful server context
+- Answer questions about previous discussions
+- Summarize recent stored topics
+- Detect when someone may be asking about past server context
+- Provide server memory statistics
+- Respect user opt-out choices
+
+MemoryBot does not sell user data.
+
+## Channel Controls
+
+Server administrators can control where MemoryBot operates.
+
+- `/enable [channel]` enables memory collection in a channel
+- `/disable [channel]` disables memory collection in a channel
+- `/forget confirm:True` deletes all stored memories for the server
+- `/memory_stats` shows memory statistics
+
+If a channel is not enabled, MemoryBot does not collect memory from that channel.
+
+## User Controls
+
+Users can opt out of memory collection in a server.
+
+- `/ignore_me` stops MemoryBot from collecting that user’s messages
+- `/unignore_me` allows MemoryBot to collect that user’s messages again in enabled channels
+
+## Data Retention
+
+By default, MemoryBot keeps stored memories for 90 days.
+
+The bot operator may configure a different retention period. If retention is set to `0`, memories may be kept indefinitely.
+
+MemoryBot runs a cleanup task every 24 hours while online to remove expired memories.
+
+## Data Deletion
+
+Server administrators can delete all stored memories for their server by running:
+
+```text
+/forget confirm:True
